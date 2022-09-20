@@ -65,6 +65,7 @@ public class WebsocketClientTest {
             Type type = gson.fromJson(json, Type.class);
 
             if (type.getType().equalsIgnoreCase(INIT)) {
+                System.out.println("Neue Runde!");
                 Init object = gson.fromJson(json, Init.class);
             } else if (type.getType().equalsIgnoreCase(ROUND)) {
                 //bei ROUND muessen wir ja antworten, also holen wir uns das "Ack"
@@ -93,6 +94,7 @@ public class WebsocketClientTest {
                 //hier rufen wir dann auf dem Ack entsprechend unser ergebnis auf
                 ack.call(result);
             } else if (type.getType().equalsIgnoreCase(RESULT)) {
+                System.out.println("Runde vorbei!");
                 Result object = gson.fromJson(json, Result.class);
             } else {
                 System.out.println("unbekannter typ:");
